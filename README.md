@@ -1,59 +1,44 @@
-# FirstAngularApp
+# Task Manager – Angular Front-End
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.10.
+This project is a **task manager front-end** built with **Angular**, **TypeScript**, **HTML**, and **CSS**.
 
-## Development server
+The application allows each user to **create, view and delete tasks (CRUD)**.  
+Tasks have a title, summary and due date, and are linked to a specific user, so each user only sees their own tasks.
 
-To start a local development server, run:
+The project follows the **standard Angular folder structure**, using **standalone components** and a clear separation between layout, components and styles.  
+Task data is stored in the browser using `localStorage`, so it persists between page reloads.
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Features
 
-## Code scaffolding
+- **User-based tasks**
+  - Select a user and see only that user’s tasks.
+- **Task CRUD**
+  - Create new tasks, list existing tasks and remove completed ones.
+- **Modal form for new tasks**
+  - Simple form with title, summary and due date.
+- **Persistent data**
+  - Tasks are saved in `localStorage` on the client side.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## Tech Stack
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- **Framework:** Angular
+- **Language:** TypeScript
+- **Markup & Styles:** HTML, CSS
+- **Storage:** Browser `localStorage`
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Getting Started
 
-To build the project run:
+### Prerequisites
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+- [Node.js](https://nodejs.org/) installed
+- Angular CLI installed globally (optional but recommended):
 
 ```bash
-ng e2e
+npm install -g @angular/cli
 ```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
