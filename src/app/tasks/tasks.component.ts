@@ -2,7 +2,7 @@ import { Component, input, Input } from "@angular/core";
 import { TaskComponent } from "./taks/task.component";
 import { NewTask } from "./new-task/new-task.component";
 import { type NewTaskData } from "./taks/task.model";
-
+import { TaskService } from "./tasks.service";
 
 @Component({
     selector: 'app-tasks',
@@ -15,59 +15,19 @@ export class TasksComponent{
     @Input({required: true}) name!: string;
     @Input({required: true}) userId!: string;
     isAddingTask = false; 
-    tasks = [
-    {
-    id: 't1',
-    userId: 'u1',
-    title: 'Master Angular',
-    summary:
-      'Learn all the basic and advanced features of Angular & how to apply them.',
-    dueDate: '2025-12-31',
-  },
-  {
-    id: 't2',
-    userId: 'u3',
-    title: 'Build first prototype',
-    summary: 'Build a first prototype of the online shop website',
-    dueDate: '2024-05-31',
-  },
-  {
-    id: 't3',
-    userId: 'u3',
-    title: 'Prepare issue template',
-    summary:
-      'Prepare and describe an issue template which will help with project management',
-    dueDate: '2024-06-15',
-  },
-    ]
+    //dependence injection é quando voce cria apenas uma instancia de uma classe e assim voce pode usa-la em todos os componentes; o angular faz isso sozinho 
 
- get selectedUserTasks(){
-    return this.tasks.filter((task) => task.userId == this.userId)
- }
+    constructor(private tasksService: TaskService ){} // a gente precisa de um objeto do tipo tasksService 
+
+  get selectedUserTasks(){
+    return this.tasksService.getUserTasks(this.userId);  
+  }
 
   onStartAddTask(){
     this.isAddingTask = true;
   }
   
-  OnCancelAddTask(){
+  OnCloseAddTask(){
     this.isAddingTask = false
   }
-
- onCompleteTask(id:string){
-   this.tasks = this.tasks.filter((task) => task.id != id)
- }
-
- OnAddTask(taskData: NewTaskData){
-    this.tasks.unshift({
-      id: new Date().getTime.toString(),
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date
-    })
-
-    this.isAddingTask = false;
- 
- }
-
 }
